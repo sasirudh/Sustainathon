@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emoji Rating</title>
+
+    <!-- External Stylesheet Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Internal Styles -->
+    <style>
+      /* General Body Styles */
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #87ceeb;
+        flex-direction: column; /* Arrange elements vertically */
+      }
+
+      /* Title Text Styles */
+      .how {
+        font-size: 40px;
+        margin-bottom: 20px; /* Adds space between title and feedback container */
+      }
+
+      /* Container for Feedback Section */
+      .feedback-container {
+        background-color: #8bcff1;
+        width: 400px;
+        height: 250px; /* Increased height for space for submit button */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        position: relative;
+        padding-bottom: 60px; /* Space for the button */
+      }
+
+      /* Emoji Container Styles */
+      .emoji-container {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 20%;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        overflow: hidden;
+      }
+
+      /* Emoji Icon Styles */
+      .fa-regular {
+        margin: 1px;
+        transform: translateX(0);
+        transition: transform 0.2s;
+      }
+
+      /* Active Star Style */
+      .fa-star.active {
+        color: #fbc200;
+      }
+
+      /* Rating Container Styles */
+      .rating-container {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 40%;
+      }
+
+      /* Submit Button Style */
+      .submit-btn {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10px;
+        background-color: #fbc200;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      /* Thanks message style */
+      .thanks-message {
+        display: none;
+        font-size: 20px;
+        font-weight: bold;
+        color: green;
+        text-align: center;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Title Section -->
+    <div class="how">How is your mood today?</div>
+
+    <!-- Feedback Container -->
+    <div class="feedback-container">
+      <!-- Emoji Container -->
+      <div class="emoji-container">
+        <i class="fa-regular fa-face-angry fa-3x"></i>
+        <i class="fa-regular fa-face-frown fa-3x"></i>
+        <i class="fa-regular fa-face-meh fa-3x"></i>
+        <i class="fa-regular fa-face-smile fa-3x"></i>
+        <i class="fa-regular fa-face-laugh fa-3x"></i>
+      </div>
+
+      <!-- Rating Container -->
+      <div class="rating-container">
+        <i class="fa-solid fa-star fa-2x"></i>
+        <i class="fa-solid fa-star fa-2x"></i>
+        <i class="fa-solid fa-star fa-2x"></i>
+        <i class="fa-solid fa-star fa-2x"></i>
+        <i class="fa-solid fa-star fa-2x"></i>
+      </div>
+
+      <!-- Submit Button -->
+      <button class="submit-btn">Submit</button>
+      <a href="/home">Back to Home</a>
+    </div>
+
+    <!-- Thanks Message -->
+    <div class="thanks-message">Thanks for your rating!</div>
+
+    <!-- JavaScript Section -->
+    <script>
+      // Get all star and emoji elements
+      const starsEl = document.querySelectorAll(".fa-star");
+      const emojisEl = document.querySelectorAll(".fa-regular");
+      const colorArray = ["red", "orange", "yellow", "blue", "green"];
+      const submitButton = document.querySelector(".submit-btn");
+      const thanksMessage = document.querySelector(".thanks-message");
+
+      // Initial rating update
+      updateRating(0);
+
+      // Add click event listeners to stars
+      starsEl.forEach((starEl, index) => {
+        starEl.addEventListener("click", () => {
+          updateRating(index);
+        });
+      });
+
+      // Update rating and change emoji position/color
+      function updateRating(index) {
+        // Update star appearance based on rating
+        starsEl.forEach((starEl, idx) => {
+          if (idx < index + 1) {
+            starEl.classList.add("active");
+          } else {
+            starEl.classList.remove("active");
+          }
+        });
+
+        // Update emoji position and color
+        emojisEl.forEach((emojiEl) => {
+          emojiEl.style.transform = `translateX(-${index * 50}px)`;
+          emojiEl.style.color = colorArray[index];
+        });
+      }
+
+      // Show thanks message when submit button is clicked
+      submitButton.addEventListener("click", () => {
+        thanksMessage.style.display = "block";
+      });
+    </script>
+  </body>
+</html>

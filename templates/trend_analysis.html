@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mood Trends</title>
+</head>
+<body>
+    <h1>Mood Trend Analysis</h1>
+    <h2>Overall Mood Counts</h2>
+    <ul>
+        {% for mood, count in mood_counts.items() %}
+        <li>{{ mood }}: {{ count }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Weekly Trends</h2>
+    <ul>
+        {% for week, moods in week_trends.items() %}
+        <li>Week {{ week }}:
+            <ul>
+                {% for mood, count in moods.items() %}
+                <li>{{ mood }}: {{ count }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Day of Week Trends</h2>
+    <ul>
+        {% for day, moods in day_trends.items() %}
+        <li>{{ day }}:
+            <ul>
+                {% for mood, count in moods.items() %}
+                <li>{{ mood }}: {{ count }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

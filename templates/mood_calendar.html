@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Calendar</title>
+</head>
+<body>
+    <h1>Mood Calendar for {{ month }} {{ year }}</h1>
+
+    <form method="POST">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for week in cal %}
+                    <tr>
+                        {% for day in week %}
+                            {% if day != 0 %}
+                                <td>
+                                    <label for="mood_{{ day }}">{{ day }}</label><br>
+                                    <select name="mood" id="mood_{{ day }}">
+                                        <option value="">Select Mood</option>
+                                        <option value="Good" {% if mood_by_day.get(day) == "Good" %}selected{% endif %}>Good</option>
+                                        <option value="Bad" {% if mood_by_day.get(day) == "Bad" %}selected{% endif %}>Bad</option>
+                                    </select>
+                                </td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit">Save Moods</button>
+    </form>
+</body>
+</html>

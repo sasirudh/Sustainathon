@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .sidebar a:hover {
+            background-color: #555;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Welcome, {{ name }}!</h2>
+            <p>Mood Rating: {{ mood }}</p>
+            <a href="/questionnaire">Take the PHQ-9 Questionnaire</a>
+            <a href="/results">View Results</a>
+            <a href="/mood">Rate your mood</a>
+            <a href="{{ url_for('mood_calendar') }}">View Mood Calendar</a>
+            <a href="/">Logout</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <h1>Home</h1>
+            <p>Welcome to the Mental Health Tracker application. Use the sidebar to navigate to different sections.</p>
+        </div>
+    </div>
+</body>
+</html>

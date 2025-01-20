@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Calendar</title>
+    <style>
+        body {
+            background-color: #f4f8fb;
+            font-family: Brush Script;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+            color: #6495ED;
+            font-size: 3em;
+        }
+
+        .month-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 2em;
+        }
+
+        .month-name {
+            margin: 0 20px;
+            color: #6495ED;
+        }
+
+        .arrows {
+            cursor: pointer;
+            font-size: 2em;
+            color: #6495ED;
+            padding: 0 20px;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr); /* 7 columns for each day of the week */
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .day {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 100px;
+            background-color: #87CEEB;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .day:hover {
+            opacity: 0.8;
+        }
+
+        .mood-selector {
+            margin-top: 20px;
+        }
+
+        .mood-btn {
+            padding: 1px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .happy { background-color: #fff59d; }
+        .anxious { background-color: #ffcc80; }
+        .stressed { background-color: #e57373; }
+        .peaceful { background-color: #81c784; }
+        .motivated { background-color: #64b5f6; }
+
+        .mood-btn:hover {
+            opacity: 0.8;
+        }
+
+        .selected-mood {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        /* Adding emoji styles */
+        .emoji {
+            font-size: 15px;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mood Calendar✨</h1>
+
+        <!-- Month Header -->
+        <div class="month-header">
+            <span class="arrows" onclick="changeMonth('prev')">&#8592;</span>
+            <span class="month-name" id="month-name">January 2025</span>
+            <span class="arrows" onclick="changeMonth('next')">&#8594;</span>
+        </div>
+
+        <!-- Calendar Grid -->
+        <div class="calendar" id="calendar"></div>
+
+        <!-- Mood Selector -->
+        <div class="mood-selector">
+            <button class="mood-btn happy" onclick="setMood('happy')">Happy<span class="emoji">😊</span></button>
+            <button class="mood-btn anxious" onclick="setMood('anxious')">Anxious<span class="emoji">😟</span></button>
+            <button class="mood-btn stressed" onclick="setMood('stressed')">Stressed<span class="emoji">😣</span></button>
+            <button class="mood-btn peaceful" onclick="setMood('peaceful')">Peaceful<span class="emoji">😌</span></button>
+            <button class="mood-btn motivated" onclick="setMood('motivated')">Motivated<span class="emoji">💪</span></button>
+        </div>
+
+        <div class="selected-mood">
+            <span id="selected-mood">Selected Mood: None</span>
+        </div>
+    </div>
+
+    <script>
+        let selectedMood = '';
+        let currentMonth = 0; // 0 for January, 1 for February, etc.
+        const currentYear = new Date().getFullYear();
+        const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // Days in each month
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const calendarElement = document.getElementById('calendar');
+        const monthNameElement = document.getElementById('month-name');
+
+        // Function to set the selected mood
+        function setMood(mood) {
+            selectedMood = mood;
+            document.getElementById('selected-mood').textContent = `Selected Mood: ${mood}`;
+        }
+
+        // Generate the calendar days
+        function generateCalendar() {
+            calendarElement.innerHTML = ''; // Clear the previous calendar
+
+            const month = monthNames[currentMonth];
+            monthNameElement.textContent = `${month} ${currentYear}`;
+
+            const daysInCurrentMonth = daysInMonth[currentMonth];
+
+            // Generate the days of the month
+            for (let day = 1; day <= daysInCurrentMonth; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.classList.add('day');
+                dayElement.textContent = day;
+                dayElement.addEventListener('click', () => updateMood(dayElement));
+                calendarElement.appendChild(dayElement);
+            }
+        }
+
+        // Update mood of the clicked day
+        function updateMood(dayElement) {
+            if (selectedMood) {
+                switch (selectedMood) {
+                    case 'happy':
+                        dayElement.style.backgroundColor = '#fff59d'; // Happy color (light yellow)
+                        break;
+                    case 'anxious':
+                        dayElement.style.backgroundColor = '#ffcc80'; // Anxious color (light orange)
+                        break;
+                    case 'stressed':
+                        dayElement.style.backgroundColor = '#e57373'; // Stressed color (soft red)
+                        break;
+                    case 'peaceful':
+                        dayElement.style.backgroundColor = '#81c784'; // Peaceful color (light green)
+                        break;
+                    case 'motivated':
+                        dayElement.style.backgroundColor = '#64b5f6'; // Motivated color (light blue)
+                        break;
+                }
+            }
+        }
+
+        // Change the month
+        function changeMonth(direction) {
+            if (direction === 'prev') {
+                currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1; // Move to the previous month
+            } else if (direction === 'next') {
+                currentMonth = (currentMonth === 11) ? 0 : currentMonth + 1; // Move to the next month
+            }
+            generateCalendar();
+        }
+
+        // Initialize the calendar for the first month
+        generateCalendar();
+    </script>
+</body>
+</html>
