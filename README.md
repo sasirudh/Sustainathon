@@ -8,23 +8,53 @@ This is a Flask-based web application for tracking user moods and assessing ment
 ## Features
 1. **User Authentication**  
    - Login functionality with predefined users stored in a simple dictionary.
+     ![login page](https://github.com/user-attachments/assets/cc926d92-457f-4c49-92bb-209af9935068)
+     
+
+![Home page](https://github.com/user-attachments/assets/0e5e0a8a-7621-4f55-a802-18d57b0c7a4a)
 
 2. **PHQ-9 Questionnaire**  
    - A form-based interface to complete the PHQ-9 depression assessment.
    - Automatic calculation of severity levels based on scores.
+     ![PHQ9](https://github.com/user-attachments/assets/33e0aed2-1e05-4b7f-b7f1-3f396a451489)
+
 
 3. **Mood Tracking**  
    - Daily mood ratings stored in a CSV file.
    - Visualization of mood trends over time (month, week, day).
+     ![rating](https://github.com/user-attachments/assets/04bd341b-9785-47bd-aa2a-f43297904f73)
+
 
 4. **Mood Calendar**  
    - A calendar view to display and update moods for each day of the current month.
+     
+     ![mood calendar](https://github.com/user-attachments/assets/fb0b0c22-6609-4732-af15-834123fc6b62)
+
 
 5. **Trend Analysis**  
    - Aggregated statistics for mood trends by month, week, and day of the week.
 
 6. **Data Storage**  
    - All data is stored locally in CSV files: `phq9.csv` and `user_moods.csv`.
+     ![data stored](https://github.com/user-attachments/assets/75a7be45-bfe6-4329-9ab6-03027bc940a7)
+
+7. **Dashboard**
+   -Comprehensive Mental Health Tracking: Seamlessly journal your thoughts and emotions while accessing a dynamic dashboard to view your progress and insights, available across both mobile and desktop for anytime, anywhere convenience.
+   
+7. **Mobile access**
+   ![mobile viz](https://github.com/user-attachments/assets/ee4ec0c0-55a1-4b63-956f-3aa4c1e04f82)
+9. **Journaling app**
+   -Capture your thoughts and emotions effortlessly with a built-in journaling feature, complemented by a dynamic dashboard to track your mental health journey. Accessible on both mobile and desktop for ultimate flexibility
+   
+11. **Mobile access**
+   
+![WhatsApp Image 2025-01-21 at 11 31 53 PM](https://github.com/user-attachments/assets/1abb5d1a-b7ab-46f1-b9b5-94c8f1e1a0c7)
+
+12. **desktop access**
+![journaling in desktop](https://github.com/user-attachments/assets/0065fb69-dbce-4f8e-ae00-b476a1e3b926)
+
+
+
 
 ---
 
