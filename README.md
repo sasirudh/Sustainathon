@@ -1,4 +1,4 @@
-# README for SAMJAY DATA DRIVEN MENTAL HEALTH DIAGNOSIS WITH DASHBOARD IN MOBILE.
+# README for SAMJAY DATA DRIVEN MENTAL HEALTH DIAGNOSIS WITH DASHBOARD IN MOBILE PHONE - BY Alpha Coders.
 
 ## Overview
 This is a Flask-based web application for tracking user moods and assessing mental health using the PHQ-9 questionnaire. The application includes user authentication, mood rating, PHQ-9 scoring, trend analysis, and a calendar-based interface for viewing and updating moods.
