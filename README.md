@@ -33,6 +33,9 @@ This is a Flask-based web application for tracking user moods and assessing ment
 
 5. **Trend Analysis**  
    - Aggregated statistics for mood trends by month, week, and day of the week.
+  
+
+![fccae660-579c-4928-a554-944c01a75c1c](https://github.com/user-attachments/assets/a7ef58b6-8f41-4afe-bd11-c9f2bd09e9ac)
 
 6. **Data Storage**  
    - All data is stored locally in CSV files: `phq9.csv` and `user_moods.csv`.
@@ -41,8 +44,14 @@ This is a Flask-based web application for tracking user moods and assessing ment
 7. **Dashboard**
    -Comprehensive Mental Health Tracking: Seamlessly journal your thoughts and emotions while accessing a dynamic dashboard to view your progress and insights, available across both mobile and desktop for anytime, anywhere convenience.
    
+**desktop**
+
+![Screenshot 2025-01-22 000901](https://github.com/user-attachments/assets/4ee684c5-b23f-4a3c-b655-ff66e95a16bd)
+
+   
 7. **Mobile access**
    ![mobile viz](https://github.com/user-attachments/assets/ee4ec0c0-55a1-4b63-956f-3aa4c1e04f82)
+   
 9. **Journaling app**
    -Capture your thoughts and emotions effortlessly with a built-in journaling feature, complemented by a dynamic dashboard to track your mental health journey. Accessible on both mobile and desktop for ultimate flexibility
    
